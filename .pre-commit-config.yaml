@@ -1,0 +1,19 @@
+# A remote hook repo makes pre-commit install its own pinned ruff, which drifts
+# from the ruff on PATH, so these hooks are `local`/`system`.
+repos:
+  - repo: local
+    hooks:
+      # Same args as conform.nvim's ruff_organize_imports, so the nvim keymap
+      # and this rewrite a file identically.
+      - id: ruff-organize-imports
+        name: ruff organize imports
+        entry: ruff check --fix --force-exclude --select=I001
+        language: system
+        types_or: [python, pyi]
+        require_serial: true
+      - id: ruff-format
+        name: ruff format
+        entry: ruff format --force-exclude
+        language: system
+        types_or: [python, pyi]
+        require_serial: true

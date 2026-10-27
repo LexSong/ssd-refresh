@@ -1,0 +1,32 @@
+[project]
+name = "ssd-refresh"
+version = "0.1.0"
+description = "Find files that read slowly from an aging SSD, and rewrite them so they read fast again"
+authors = [
+    { name = "Lex Song", email = "LexSong.tw@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "typer>=0.27.3",
+]
+
+[project.scripts]
+ssd-refresh = "ssd_refresh:main"
+
+# One file is the whole program. uv_build only builds package directories, so
+# flit_core (no dependencies) builds the single module ssd_refresh.py instead.
+[build-system]
+requires = ["flit_core>=4.1,<5"]
+build-backend = "flit_core.buildapi"
+
+[tool.pyright]
+# Point Pyright (Claude Code / CLI / CI) at the uv-managed .venv. neovim resolves
+# it via before_init instead; both agree on ./.venv, so no conflict.
+venvPath = "."
+venv = ".venv"
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint.isort]
+force-single-line = true

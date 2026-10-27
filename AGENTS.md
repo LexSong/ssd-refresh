@@ -1,8 +1,9 @@
 # Notes for coding agents
 
 `ssd-refresh` finds large files that read slowly from the D: SSD and rewrites them.
-On that drive, data read at full speed when written but drops to 50-100 MB/s after
-some weeks. Only a rewrite brings it back.
+On that drive, some files read at 50-100 MB/s instead of ~1,000 MB/s. Only a rewrite
+helps, but not always: a file's speed can swing 10x between scans, and heavy writes
+slow other reads for a while.
 
 It is installed with `uv tool install git+https://github.com/LexSong/ssd-refresh`,
 so a change reaches the installed tool only after a push. So unlike my other repos,

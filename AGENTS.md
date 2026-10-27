@@ -4,6 +4,10 @@
 On that drive, data read at full speed when written but drops to 50-100 MB/s after
 some weeks. Only a rewrite brings it back.
 
+It is installed with `uv tool install git+https://github.com/LexSong/ssd-refresh`,
+so a change reaches the installed tool only after a push. So unlike my other repos,
+this one has a remote and wants pushes.
+
 - Speed tests must bypass the Windows file cache (`FILE_FLAG_NO_BUFFERING`), or they
   measure RAM instead of the drive.
 - The copy must write real new data. `shutil.copyfile`, Explorer, `copy` and
